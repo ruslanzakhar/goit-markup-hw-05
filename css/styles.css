@@ -7,11 +7,12 @@
    --gray-background:#F5F4FA;
    --background-blue:#1886F3;
     --icon-soc-color:#AFB1B8;
+    --animation: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
     }
 
 a{
     text-decoration: none;
-  }
+}
 
 ul{  padding-left: 0;
      margin: 0;
@@ -136,17 +137,44 @@ header {
     color: var(--accent-color);
 }
 
+.link-list .link-items{
+    position: relative;
+    display: block; 
+    font-weight: 500;
+    line-height: 1.14;
+    letter-spacing: 0.02em;
+    color: var(--paragraph-color);
+    text-decoration: none;
+    transition: var(--animation);
+}
+
 .link-list .link-items:hover,
 .link-list .link-items:focus{
    color: var(--accent-color);
 }
 
-.link-list .link-items{
-    font-weight: 500;
-    line-height: 1.14;
-    letter-spacing: 0.02em;
-    color: var(--paragraph-color);
 
+
+.link-list  .link-items.current::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--accent-color);
+    border-radius: 2px;
+}
+
+.link-list  .link-items:hover::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--accent-color);
+    border-radius: 2px;
 }
 
 .contacts-mail{
@@ -156,6 +184,7 @@ header {
     line-height: 1.14;
     letter-spacing: 0.02em;
     color: var(--primary-color);
+    transition: var(--animation);
 }
 
 .contacts-tel{ 
@@ -165,6 +194,7 @@ header {
     line-height: 1.14;
     letter-spacing: 0.02em;
     color: var(--primary-color);
+    transition: var(--animation);
 }
 
 .contacts .contacts-mail:hover ,
@@ -182,6 +212,14 @@ header {
 .section {
     padding: 94px 0 94px 0 ;
  }
+
+.link-items::before{
+    content: '';
+    height: 2px;
+    width: 20px;
+    background-color: var(--accent-color);
+    border-radius: 4px;
+}
 
 .hero{
     padding: 200px 0 200px;
@@ -222,6 +260,7 @@ header {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
     border-radius: 4px;
     font-family: inherit;
+    transition: var(--animation);
 }
 
 .hero-btn:hover,
@@ -263,7 +302,6 @@ header {
     
  }
 
-
  .edge-list{
     display: flex;
     margin-left: auto;
@@ -288,6 +326,29 @@ header {
     color: var(--paragraph-color);
 }
  
+.overlay-affairs{
+    
+    position: relative;
+
+}
+
+.overlay-text{
+    position: absolute;
+    background: rgba(47, 48, 58, 0.8);
+    bottom: 0;
+    width: 100%;
+    height: 70px;
+    text-align: center;
+    padding: 27px 27px 0;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.14;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--main-color);
+}
 
 .affairs-list{
     display: flex;
@@ -329,7 +390,8 @@ header {
     justify-content: center;
     width: 100%;
     height: 100%;  
-     fill: var(--icon-soc-color);
+    fill: var(--icon-soc-color);
+    transition: var(--animation);
 }
 
  .team-soc-link:hover,
@@ -368,24 +430,6 @@ header {
     color: var(--primary-color);
 }
 
-.btn-list .btn-items:hover,
-.btn-list .btn-items:active{
-    color: var(--main-color);
-    background-color: var(--accent-color);
-    box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1),
-    0px 1px 2px rgba(0, 0, 0, 0.08),
-    0px 2px 2px rgba(0, 0, 0, 0.12);
-
-}
-
-.projects-items:hover,
-.projects-items:focus{
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 
-    0px 4px 4px rgba(0, 0, 0, 0.06), 
-    1px 4px 6px rgba(0, 0, 0, 0.16);
-
-}
-
 .hero-btns{
     margin-bottom: 50px;
     display: flex;
@@ -410,6 +454,17 @@ header {
     letter-spacing: 0.03em;
     color:var(--paragraph-color);
     border: none;
+    transition: var(--animation);
+}
+
+.btn-list .btn-items:hover,
+.btn-list .btn-items:active{
+    color: var(--main-color);
+    background-color: var(--accent-color);
+    box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1),
+    0px 1px 2px rgba(0, 0, 0, 0.08),
+    0px 2px 2px rgba(0, 0, 0, 0.12);
+
 }
 
 .projects-list{
@@ -418,11 +473,52 @@ header {
     gap:30px;
 }
 
+.project-overlay{
+    overflow: hidden;
+    position: relative;
+}
+
+.overlay{
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: translatey(100%);
+    transition: transform 250ms ease;
+    background-color:rgba(33, 150, 243, 0.9);
+    padding: 63px 24px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.56; 
+    letter-spacing: 0.03em;
+    color: var(--main-color);
+    border: 1px solid #000000;
+  
+}
+
+.card-link:hover .overlay{
+    transform: translatey(0);
+    
+}
+
 .projects-items {
     width: calc((100% - 60px) / 3);
     border: 1px solid #EEEEEE;
+    transition: var(--animation);
+    
 }
 
+.projects-items:hover,
+.projects-items:focus{
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 
+    0px 4px 4px rgba(0, 0, 0, 0.06), 
+    1px 4px 6px rgba(0, 0, 0, 0.16);
+
+}
 .project-title{
     color: var(--paragraph-color);
     font-size: 18px;
@@ -438,10 +534,10 @@ header {
 }
 
 .name-list{
-padding: 20px 24px 20px ;
-border-bottom: 1px solid var(--gray-background);
-border-right:1px solid var(--gray-background);
-border-left: 1px solid var(--gray-background);
+    padding: 20px 24px 20px ;
+    border-bottom: 1px solid var(--gray-background);
+    border-right:1px solid var(--gray-background);
+    border-left: 1px solid var(--gray-background);
 }
 
 .icon-box-clients {   
@@ -467,7 +563,7 @@ margin-right: 30px;
     border: 1px solid #AFB1B8 ;
     cursor: pointer;
     fill: #afb1b8;  
-    
+    transition: var(--animation);
 }
 
 .clients-link:hover,
@@ -535,7 +631,7 @@ border-color: var(--accent-color);
     line-height: 1.71;
     letter-spacing: 0.03em;
     color: rgba(255, 255, 255, 0.6);
-
+    transition: var(--animation);
 }
 
 .footer-links-tel{
@@ -546,6 +642,7 @@ border-color: var(--accent-color);
     line-height: 1.71;
     letter-spacing: 0.03em;
     color: rgba(255, 255, 255, 0.6);
+    transition: var(--animation);
 }
 
 .logo{
@@ -611,6 +708,7 @@ color: var(--accent-color);
     color:var(--main-color);
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.1);
+    transition: var(--animation);
 }
 
 
