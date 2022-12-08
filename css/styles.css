@@ -82,6 +82,7 @@ ul{  padding-left: 0;
 
 header {
     border-bottom: 1px solid #ECECEC;
+    
 }
 
 .header-nav{
@@ -101,7 +102,7 @@ header {
 
 .header-items{
     display: block;
-    padding: 32px 0px;
+    
 }
 
 .contacts{
@@ -122,6 +123,7 @@ header {
 
 .logo-header {
     margin-right: 93px;
+    padding: 24px 0 25px;
     font-family: 'Raleway' , sans-serif;
     color:var(--accent-color);
     font-weight: 700;
@@ -134,6 +136,7 @@ header {
 
 
 .link-list .header-items .current{
+    position: relative;
     color: var(--accent-color);
 }
 
@@ -153,9 +156,13 @@ header {
    color: var(--accent-color);
 }
 
+.link-items{
+    padding: 32px 0 32px 0;
+}
 
 
 .link-list  .link-items.current::after{
+    display: block;
     content: '';
     position: absolute;
     width: 100%;
@@ -166,7 +173,8 @@ header {
     border-radius: 2px;
 }
 
-.link-list  .link-items:hover::after{
+.link-list  .link-items:hover::after,
+.link-list  .link-items:focus::after{
     content: '';
     position: absolute;
     width: 100%;
@@ -260,7 +268,7 @@ header {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
     border-radius: 4px;
     font-family: inherit;
-    transition: var(--animation);
+    transition:  250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hero-btn:hover,
@@ -391,7 +399,7 @@ header {
     width: 100%;
     height: 100%;  
     fill: var(--icon-soc-color);
-    transition: var(--animation);
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
  .team-soc-link:hover,
@@ -454,7 +462,7 @@ header {
     letter-spacing: 0.03em;
     color:var(--paragraph-color);
     border: none;
-    transition: var(--animation);
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-list .btn-items:hover,
@@ -538,6 +546,7 @@ header {
     border-bottom: 1px solid var(--gray-background);
     border-right:1px solid var(--gray-background);
     border-left: 1px solid var(--gray-background);
+   
 }
 
 .icon-box-clients {   
@@ -563,13 +572,13 @@ margin-right: 30px;
     border: 1px solid #AFB1B8 ;
     cursor: pointer;
     fill: #afb1b8;  
-    transition: var(--animation);
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .clients-link:hover,
 .clients-link:focus{   
-fill: var(--accent-color);
-border-color: var(--accent-color);
+   fill: var(--accent-color);
+    border-color: var(--accent-color);
 }
 
  .icon-items{
@@ -708,7 +717,7 @@ color: var(--accent-color);
     color:var(--main-color);
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.1);
-    transition: var(--animation);
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 
@@ -732,3 +741,48 @@ color: var(--accent-color);
     
     margin-left: 70px;
  }
+
+
+ .backdrop{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color:  rgba(0, 0, 0, 0.2);
+    transition: opacity 300ms linear , visibility 300ms linear ;
+ }
+
+ .modal{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    width: 528px;
+    min-height: 581px;
+    background-color: var(--main-color);
+    border-radius: 4px;
+    transition: transform 250ms linear ;
+}
+
+.backdrop.is-hidden .modal{
+    transform: translate(-50%, -50%) scale(0);
+}
+
+.modal-close{
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    border-radius: 50%; 
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 6px 6px;
+}
+
+.is-hidden{
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
